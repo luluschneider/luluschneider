@@ -1,7 +1,7 @@
 /* Font Face */
 @font-face {
   font-family: 'Dayrom';
-  src: url('./Assets/Fonts/dayrom.ttf') format('truetype');
+  src: url('/Assets/Fonts/dayrom.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
