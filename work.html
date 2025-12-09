@@ -3,103 +3,297 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Work - Portfolio</title>
+  <title>Work - Lulu Schneider</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .work-item {
-      border: none;
+    body {
+      margin: 0;
       padding: 0;
+      background: #fff;
     }
 
-    .work-item img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      background: #e0e0e0;
-      display: block;
+    /* Header Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      background: #fff;
+      z-index: 50;
     }
 
-    .work-item h2 {
+    .header .logo {
       font-size: 18px;
-      margin-top: 12px;
-      margin-bottom: 4px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
     }
 
-    .work-item .role {
+    .header .logo:hover {
+      color: #5eb0d5;
+    }
+
+    .header nav {
+      position: static;
+      padding: 0;
+      background: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    .header nav a {
+      text-decoration: none;
       color: #666;
       font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .header nav a:hover {
+      color: #5eb0d5;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      padding: 100px 32px 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .photo-item {
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s;
+    }
+
+    .photo-item:hover img {
+      opacity: 0.7;
+    }
+
+    .photo-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0);
+      pointer-events: none;
+      transition: background 0.3s;
+    }
+
+    .photo-item:hover::after {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 300;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: #5eb0d5;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 60px;
+      font-weight: 300;
+      cursor: pointer;
+      padding: 20px;
+      user-select: none;
+      transition: color 0.2s;
+      z-index: 1001;
+    }
+
+    .lightbox-nav:hover {
+      color: #5eb0d5;
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
     }
 
     @media (max-width: 768px) {
-      .work-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        padding: 80px 16px 16px;
       }
-    }
 
-    @media (max-width: 480px) {
-      .work-grid {
-        grid-template-columns: 1fr;
+      .lightbox-nav {
+        font-size: 40px;
+        padding: 10px;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="work.html" class="active">Work</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="container">
-    <h1>Work</h1>
-
-    <div class="work-grid">
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+1" alt="Project 1">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2023</div>
-      </div>
-
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+2" alt="Project 2">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2023</div>
-      </div>
-
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+3" alt="Project 3">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2022</div>
-      </div>
-
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+4" alt="Project 4">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2022</div>
-      </div>
-
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+5" alt="Project 5">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2021</div>
-      </div>
-
-      <div class="work-item">
-        <img src="https://via.placeholder.com/400x300/e0e0e0/666?text=Project+6" alt="Project 6">
-        <h2>Project Title</h2>
-        <div class="role">Company Name • 2021</div>
-      </div>
-    </div>
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html" class="logo">Lulu Schneider</a>
+    <nav>
+      <a href="projects.html">projects</a>
+      <a href="about.html">about</a>
+    </nav>
   </div>
+
+  <!-- Photo Grid -->
+  <div class="photo-grid">
+    <div class="photo-item" data-index="1">
+      <img src="Assets/WORK PICS/DSC_9921.jpg" alt="Photo 1">
+    </div>
+    <div class="photo-item" data-index="2">
+      <img src="Assets/WORK PICS/_H1A1593LuluEdit.jpg" alt="Photo 2">
+    </div>
+    <div class="photo-item" data-index="3">
+      <img src="Assets/WORK PICS/DSC_0062.jpg" alt="Photo 3">
+    </div>
+    <div class="photo-item" data-index="4">
+      <img src="Assets/WORK PICS/DSC01682.jpg" alt="Photo 4">
+    </div>
+    <div class="photo-item" data-index="5">
+      <img src="Assets/WORK PICS/DSC_0215.jpg" alt="Photo 5">
+    </div>
+    
+   
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <span class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8249;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <span class="lightbox-nav lightbox-next" id="lightbox-next">&#8250;</span>
+  </div>
+
+  <script>
+    const photoItems = document.querySelectorAll('.photo-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    
+    let currentIndex = 0;
+    const images = Array.from(photoItems).map(item => item.querySelector('img').src);
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex];
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex];
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex];
+    }
+
+    photoItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  </script>
 
 </body>
 </html>
