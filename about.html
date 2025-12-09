@@ -3,112 +3,153 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Work - Portfolio</title>
+  <title>About - Lulu Schneider</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
       padding: 0;
       background: #fff;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: #000;
     }
 
-    nav {
+    /* Header Navigation */
+    .header {
       position: fixed;
       top: 0;
+      left: 0;
       right: 0;
-      padding: 24px 32px;
       display: flex;
-      gap: 24px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
       background: #fff;
-      z-index: 100;
+      z-index: 50;
     }
 
-    nav a {
+    .header .logo {
+      font-size: 18px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .header .logo:hover {
+      color: #5eb0d5;
+    }
+
+    .header nav {
+      position: static;
+      padding: 0;
+      background: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    .header nav a {
       text-decoration: none;
       color: #666;
       font-size: 14px;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: #000;
+    .header nav a:hover {
+      color: #5eb0d5;
     }
 
-    nav a.active {
-      color: #000;
-      font-weight: 500;
-    }
-
-    .container {
-      max-width: 900px;
+    /* About Container */
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 120px 32px 60px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 80px 24px 60px;
     }
 
-    h1 {
-      font-size: 32px;
-      letter-spacing: 0.5px;
-      margin-bottom: 48px;
+    .profile-photo {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .work-grid {
-      display: grid;
-      gap: 48px;
+    .bio {
+      text-align: center;
+      line-height: 1.7;
+      color: #333;
+      font-size: 16px;
+      max-width: 500px;
     }
 
-    .work-item {
-      border-top: 1px solid #e0e0e0;
-      padding-top: 24px;
-    }
-
-    .work-item h2 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .work-item .role {
-      color: #666;
-      font-size: 14px;
+    .bio p {
       margin-bottom: 16px;
     }
 
-    .work-item p {
-      line-height: 1.6;
-      color: #333;
+    .bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .contact-info a {
+      color: #5eb0d5;
+      text-decoration: none;
+      transition: color 0.2s;
+      margin: 0 8px;
+    }
+
+    .contact-info a:hover {
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        padding: 100px 24px 40px;
+      }
+
+      .profile-photo {
+        max-width: 320px;
+      }
+
+      .bio {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="work.html" class="active">Work</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-  </nav>
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html" class="logo">Lulu Schneider</a>
+    <nav>
+      <a href="work.html">work</a>
+      <a href="projects.html">projects</a>
+    </nav>
+  </div>
 
-  <div class="container">
-    <h1>Work</h1>
+  <!-- About Content THIS IS WHERE YOU WRITE YOUR BIO INFORMATION-->
+  <div class="about-container">
+    <img src="" alt="Lulu Schneider" class="profile-photo">
+    
+    <div class="bio">
+      <p>NYC based portrait and fashion photographer.</p>
+      <p> </p>
+    </div>
 
-    <div class="work-grid">
-      <div class="work-item">
-        <h2>Company Name</h2>
-        <div class="role">Position Title • 2023 - Present</div>
-        <p>Description of your role and responsibilities. What you accomplished and the impact you made.</p>
-      </div>
-
-      <div class="work-item">
-        <h2>Company Name</h2>
-        <div class="role">Position Title • 2021 - 2023</div>
-        <p>Description of your role and responsibilities. What you accomplished and the impact you made.</p>
-      </div>
-
-      <div class="work-item">
-        <h2>Company Name</h2>
-        <div class="role">Position Title • 2019 - 2021</div>
-        <p>Description of your role and responsibilities. What you accomplished and the impact you made.</p>
-      </div>
+    <div class="contact-info">
+      <a href="mailto:luluschneider11@gmail.com">luluschneider11@gmail.com</a>
+      <span>•</span>
+      <a href="https://www.instagram.com/luluslittlegallery/?hl=en" target="_blank">instagram</a>
     </div>
   </div>
 
